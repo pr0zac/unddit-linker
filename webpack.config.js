@@ -52,27 +52,29 @@ module.exports = {
     filename: "[name].js"
   },
   plugins: [
-    new ExtensionReloader({
+    mode === "development" ? new ExtensionReloader({
       port: 9123,
       reloadPage: true,
       manifest: manifestPath
+    }) : null,
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: "./src/manifest.json",
+          to:   distPath,
+          // from https://stackoverflow.com/a/54700817/2636364
+          transform (content, path) {
+              return modify(content)
+          }
+        },
+        { from: "./src/icons", to:'icons/' },
+        { context: 'lib/', from: "*", to: distLibPath },
+        { context: 'node_modules/arrive/src/', from: 'arrive.js', to: distLibPath },
+      ],
     }),
-    new CopyWebpackPlugin([
-      { from: "./src/manifest.json",
-        to:   distPath,
-        // from https://stackoverflow.com/a/54700817/2636364
-        transform (content, path) {
-            return modify(content)
-        }
-      },
-      { from: "./src/icons", to:'icons/' },
-      { context: 'lib/', from: "*", to: distLibPath },
-      { context: 'node_modules/arrive/src/', from: 'arrive.js', to: distLibPath },
-    ]),
     new webpack.DefinePlugin({
       __BUILT_FOR__: built_for
     })
-  ],
+  ].filter((p) => p != null),
   module: {
     rules: [
       {
