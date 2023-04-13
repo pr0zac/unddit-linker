@@ -2,7 +2,7 @@ const regex_site = /^https?:\/\/(?:[^.]+\.)?(re(?:ve)?ddit)\.com(.*)/
 let shiftPressed = false;
 const ACTION_API = __BUILT_FOR__ === 'chrome' ? 'action' : 'browserAction'
 
-// from reveddit website utils.js
+// from unddit website utils.js
 const PATHS_SUB = ['v','r']
 const PATHS_USER = ['y','u','user']
 const PATH_STR_SUB = '/'+PATHS_SUB[0]
@@ -19,8 +19,8 @@ const convertPathToReddit = (path) => convertPathSubToReddit(convertPathUserToRe
 const updateTabURL = (url, tab) => {
   const matches = url.match(regex_site)
   if (matches) {
-    let newUrl = 'https://www.reveddit.com'+matches[2]
-    if (matches[1] === 'reveddit') {
+    let newUrl = 'https://www.unddit.com'+matches[2]
+    if (matches[1] === 'unddit') {
       newUrl = 'https://www.reddit.com'+convertPathToReddit(matches[2])
     }
     if (! shiftPressed) {
@@ -36,13 +36,13 @@ chrome[ACTION_API].onClicked.addListener(tab => {
   updateTabURL(tab.url, tab)
 })
 
-const contextMenu_id = 'reveddit-link'
+const contextMenu_id = 'unddit-link'
 chrome.contextMenus.removeAll(() => {
   chrome.contextMenus.create({
     id: contextMenu_id,
-    title: 'View on re(ve)ddit',
+    title: 'View on unddit',
     contexts: ['link','page'],
-    documentUrlPatterns: ['https://*.reddit.com/*', 'https://*.reveddit.com/*']
+    documentUrlPatterns: ['https://*.reddit.com/*', 'https://*.unddit.com/*']
   })
 })
 chrome.contextMenus.onClicked.addListener(function(info, tab) {

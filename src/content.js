@@ -16,7 +16,7 @@ window.addEventListener('keyup',function(event){
 (function () {
   let isReddit = false
   jQuery(document).ready(() => {
-    const matches = window.location.href.match(/^https?:\/\/[^/]*(reddit\.com|reveddit\.com|localhost)/)
+    const matches = window.location.href.match(/^https?:\/\/[^/]*(reddit\.com|unddit\.com|localhost)/)
     if (matches) {
       isReddit = matches[1] === 'reddit.com'
     }

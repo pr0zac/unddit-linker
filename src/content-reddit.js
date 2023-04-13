@@ -48,7 +48,7 @@ const addLinks_oldReddit = (elements) => {
         searchParams.delete('context')
       }
       if (! isComment || commentRemoved) {
-        const newButton = $(`<a href="https://www.reveddit.com${permalink+searchParams.toString()}">`).html('<span style="font-style:italic; text-decoration: underline">rev</span>eddit').wrap('<li>').parent()
+        const newButton = $(`<a href="https://www.unddit.com${permalink+searchParams.toString()}">`).html('<span style="font-style:italic; text-decoration: underline">un</span>ddit').wrap('<li>').parent()
         if (isComment) {
           $(buttons).prepend(newButton)
         } else {

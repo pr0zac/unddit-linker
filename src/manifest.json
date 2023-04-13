@@ -1,14 +1,14 @@
 {
-  "name": "reveddit linker",
-  "short_name": "reveddit link",
-  "description": "Switch between viewing content on reddit and reveddit.",
+  "name": "unddit linker",
+  "short_name": "unddit link",
+  "description": "Switch between viewing content on reddit and unddit.",
   "version": "0.0.0.9",
   "permissions": [
     "contextMenus"
   ],
   "host_permissions": [
     "https://*.reddit.com/*",
-    "https://*.reveddit.com/*"
+    "https://*.unddit.com/*"
   ],
   "icons": { "128": "icons/128.png",
     "48": "icons/48.png",
@@ -20,13 +20,13 @@
       "24": "icons/24.png",
       "32": "icons/32.png"
     },
-    "default_title" : "View on re(ve)ddit"
+    "default_title" : "View on unddit"
   },
   "background": {
     "service_worker": "background.js"
   },
   "content_scripts": [{
-    "matches": ["https://*.reveddit.com/*", "https://*.reddit.com/*"],
+    "matches": ["https://*.unddit.com/*", "https://*.reddit.com/*"],
     "js": ["lib/jquery-3.2.1.min.js", "lib/arrive.js", "content.js"]
   }],
   "manifest_version": 3

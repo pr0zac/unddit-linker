@@ -1,7 +1,7 @@
 {
-  "name": "reveddit-linker",
+  "name": "unddit-linker",
   "version": "1.0.0",
-  "description": "Provides an easy way to jump between viewing content on reddit and reveddit.",
+  "description": "Provides an easy way to jump between viewing content on reddit and unddit.",
   "main": "index.js",
   "license": "GPL-3.0",
   "private": true,

@@ -24,10 +24,10 @@ function modify(buffer) {
     var manifest = JSON.parse(buffer.toString());
     if (process.env.FORFIREFOX) {
         // setting this now presents an error when uploading
-        // let id = 'linker-stable@reveddit.com'
-        // manifest.browser_specific_settings = {
-        //     "gecko": { id }
-        // }
+        let id = 'linker-stable@unddit.com'
+        manifest.browser_specific_settings = {
+            "gecko": { id }
+        }
         delete manifest.host_permissions
         manifest.permissions.push("activeTab")
         manifest.manifest_version = 2
